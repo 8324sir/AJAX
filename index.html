@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ajax</title>
+    <style>
+        *{
+            margin: 0; padding:0;box-sizing: border-box;
+        }
+        ol{
+            list-style: none;
+        }
+        #container img{width: 150px;}
+        #container{
+            display: flex; 
+            justify-content: center; 
+            flex-wrap: wrap; max-width: 800px;
+         }
+    </style>
+</head>
+<body>
+    <ol id="container">
+    </ol>
+    <button id="btn">加载</button>
+    <script>
+        btn.onclick =  function(){
+            var page
+            var request = new XMLHttpRequest()
+            request('GET',`page` + page + `.json`)
+            request.onload = function(){
+                page += 1
+                let object = JSON.parse(request.responseText)
+                let hasNextPage = object.hasNextPage
+                if(!hasNextPage){
+                    btn.disabled = true
+                }
+                let array = object.items
+                array.forEach(function(item,index) {
+                    let li = document.createElement('li')
+                    let img = document.createElement('img')
+                    li.appendChild(img)
+                    img.src = item.url
+                    container.appendChild(li)
+                });
+            }
+            request.send()
+        }
+    </script>
+</body>
+</html>
