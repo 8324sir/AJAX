@@ -28,7 +28,7 @@
         var page = 1
         btn.onclick =  function(){
             var request = new XMLHttpRequest()
-            request.open('GET',`https://github.com/8324sir/AJAX/page${page}.json`)
+            request.open('GET',`https://github.com/8324sir/AJAX/blob/master/page${page}.json`)
             request.onload = function(){
                 page += 1
                 let object = JSON.parse(request.responseText)
