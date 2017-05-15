@@ -26,9 +26,9 @@
     <button id="btn">加载</button>
     <script>
         btn.onclick =  function(){
-            var page
+            var page = 1
             var request = new XMLHttpRequest()
-            request('GET',`/page` + page + `.json`)
+            request('GET','/page' + page + '.json')
             request.onload = function(){
                 page += 1
                 let object = JSON.parse(request.responseText)
