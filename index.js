@@ -52,6 +52,5 @@ var server = http.createServer(function(request, response){
     response.end('找不到对应的路径，你需要自行修改 index.js')
   }
 })
-
 server.listen(port)
 console.log('8324')
